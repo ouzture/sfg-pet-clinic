@@ -2,15 +2,8 @@ package ouzture.springframework.sfgpetclinic.services;
 
 import ouzture.springframework.sfgpetclinic.model.Pet;
 
-import java.util.Set;
 
-public interface PetService {
+public interface PetService extends  CrudService<Pet,Long>{
 
-
-    Pet findById(Long id);
-
-    Pet save(Pet pet);
-
-    Set<Pet> findAll();
 
 }
