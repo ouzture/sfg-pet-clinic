@@ -11,7 +11,7 @@ public class Owner extends Person {
     private String address;
     @Column(name = "city")
     private String city;
-    @Column(name = ="telephone")
+    @Column(name ="telephone")
     private String telephone;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
