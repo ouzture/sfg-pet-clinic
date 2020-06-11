@@ -37,7 +37,9 @@ jobs:
           key: v1-dependencies-{‌{ checksum "pom.xml" }}
 
       # run tests!
-      - run: mvn integration-test
+      - run:
+          name: Run Tests
+          command: mvn verify --settings 'pom.xml'
       - store_artifacts:
           path:  target
       - run:
