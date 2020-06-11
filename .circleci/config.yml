@@ -2,6 +2,7 @@
 version: 2
 jobs:
   maven/test:
+    working_directory: ~/repo
     docker:
       - image: circleci/openjdk:11.0.3-jdk-stretch
     steps:
@@ -10,7 +11,10 @@ jobs:
           name: Generate Cache Checksum
           command: find . -name 'pom.xml' | sort | xargs cat > /tmp/maven_cache_seed
       - restore_cache:
-          key: maven-{{ checksum "/tmp/maven_cache_seed" }}
+          keys:
+            - v1-dependencies-{‌{ checksum "pom.xml" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
       - run:
           name: Install Dependencies
           command: mvn dependency:go-offline --settings 'pom.xml'
