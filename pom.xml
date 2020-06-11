@@ -43,9 +43,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.0</version>
                 <configuration>
-                    <argLine>
-                        --illegal-access=permit
-                    </argLine>
+                    <argLine>@{argLine} --illegal-access=permit</argLine>
+
                 </configuration>
             </plugin>
             <plugin>
@@ -53,9 +52,7 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.22.0</version>
                 <configuration>
-                    <argLine>
-                        --illegal-access=permit
-                    </argLine>
+                    <argLine>@{argLine} --illegal-access=permit</argLine>
                 </configuration>
                 <executions>
                     <execution>
@@ -81,7 +78,7 @@
                         <id>report</id>
                         <phase>prepare-package</phase>
                         <goals>
-                            <goal>report</goal>
+                            <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
